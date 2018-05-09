@@ -49,6 +49,4 @@
 
 # manila-manage db sync
 
-5.完成db表升级后就可以 `restart manila service <https://github.com/zhongjun2/docs/blob/master/manila/manila_debug.rst>`_ 进行功能测试了
-
-`重启服务 <https://github.com/zhongjun2/docs/blob/master/manila/manila_debug.rst>`_
+5.完成db表升级后就可以 `重启manila服务 <https://github.com/zhongjun2/docs/blob/master/manila/manila_debug.rst>`_ 进行功能测试了
