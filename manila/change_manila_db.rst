@@ -18,7 +18,7 @@ https://review.openstack.org/#/c/457545/
 
 回显中显示db已经从4a482571410f 版本升级到 3650e2s75c45  版本
 
-3.（option）option）如果升级失败可以直接回退到原始版本
+3.(Option)如果升级失败可以直接回退到原始版本
 ::
 
   # manila-manage db downgrade 4a482571410f
