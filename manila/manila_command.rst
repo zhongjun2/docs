@@ -1,5 +1,5 @@
-How to restart manila service
-==============================
+The commands for manila
+========================
 
 * Restart manila api service
 
@@ -25,11 +25,11 @@ How to restart manila service
 *  查看所有服务
 ::
 
-systemctl list-units
+  systemctl list-units
 
 *  查看日志
 ::
 
-journalctl -u devstack@m-shr.service -f | ccze
-journalctl -u devstack@n-cpu.service -f | ccze
-https://docs.openstack.org/devstack/latest/systemd.html
+  journalctl -u devstack@m-shr.service -f | ccze
+  journalctl -u devstack@n-cpu.service -f | ccze
+  https://docs.openstack.org/devstack/latest/systemd.html
