@@ -2,7 +2,8 @@
 如何修改manila db字段并调试
 =========================
 
-1.按照如下review代码实例修改代码
+1.参考如下review代码例子修改manila/db相关代码新增db表或者table列等
+https://review.openstack.org/#/c/457545/
 
 2.替换到已修改代码后升级db到最新版本
 ::
