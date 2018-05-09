@@ -1,5 +1,5 @@
-The commands for manila
-========================
+How to debug manila service
+===========================
 
 * Restart manila api service
 
