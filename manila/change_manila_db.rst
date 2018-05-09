@@ -51,3 +51,23 @@ https://review.openstack.org/#/c/457545/
 # manila-manage db sync
 
 5.完成db表升级后就可以 `重启manila服务 <https://github.com/zhongjun2/docs/blob/master/manila/manila_debug.rst>`_ 进行功能测试了
+
+
+6.跑db测试用例，需要登录mysql后运行如下命令，创建跑db用例时的环境配置
+To run database migration tests:
+::
+
+  $ mysql -u %username% -p %password%
+
+  CREATE DATABASE openstack_citest;
+  CREATE USER 'openstack_citest'@'localhost' IDENTIFIED BY 'openstack_citest';
+  CREATE USER 'openstack_citest' IDENTIFIED BY 'openstack_citest';
+  GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest'@'localhost';
+  GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest';
+  FLUSH PRIVILEGES;
+
+使用tox命令调试运行db test相关用例
+::
+
+  $ tox -e debug -- manila.tests.db.migrations.alembic.test_migration
+
