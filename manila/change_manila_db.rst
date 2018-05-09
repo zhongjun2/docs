@@ -51,4 +51,4 @@
 
 5.完成db表升级后就可以 `restart manila service <https://github.com/zhongjun2/docs/blob/master/manila/manila_debug.rst>`_ 进行功能测试了
 
-`restart manila service <https://github.com/zhongjun2/docs/blob/master/manila/manila_debug.rst>`_
+`重启服务 <https://github.com/zhongjun2/docs/blob/master/manila/manila_debug.rst>`_
