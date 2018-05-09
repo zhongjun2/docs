@@ -22,9 +22,27 @@
 
   # manila-manage db downgrade 4a482571410f
 
-4.如果代码写的不好，数据表搞坏了，可以直接删掉manila表格，重新创建，再同步到稳定的版本的db表
+4.如果代码写的不好，数据表搞坏了，可以登录mysql直接删掉manila表格，重新创建，再同步到稳定的版本的db表
 ::
 
-  drop database manila;
-  create database manila;
-  manila-manage db sync；
+  # mysql -u root -p
+  Enter password:
+  Welcome to the MySQL monitor.  Commands end with ; or \g.
+  Your MySQL connection id is 12101
+  Server version: 5.7.21-0ubuntu0.16.04.1 (Ubuntu)
+
+  Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+  Oracle is a registered trademark of Oracle Corporation and/or its
+  affiliates. Other names may be trademarks of their respective
+  owners.
+
+  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+  mysql>drop database manila;
+  mysql>create database manila;
+
+重新执行同步命令同步db到最新的稳定版本
+::
+
+# manila-manage db sync；
