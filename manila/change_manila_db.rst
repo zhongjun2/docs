@@ -5,7 +5,6 @@
 1.按照如下review代码实例修改代码
 
 2.替换到已修改代码后升级db到最新版本
-  可以从下面命令的回显看到db已经从4a482571410f 版本升级到 3650e2s75c45  版本
 ::
 
   # manila-manage db sync
@@ -16,6 +15,7 @@
   2018-05-09 09:58:42.898 INFO alembic.runtime.migration [-] Running upgrade 4a482571410f -> 3650e2s75c45, add priority column for access
   2018-05-09 09:58:42.954 DEBUG alembic.runtime.migration [-] update 4a482571410f to 3650e2s75c45 from (pid=103630) update_to_step /usr/local/lib/python2.7/dist-packages/alembic/runtime/migration.py:539
 
+回显中显示db已经从4a482571410f 版本升级到 3650e2s75c45  版本
 
 3.如果升级失败可以直接回退到原始版本
 ::
