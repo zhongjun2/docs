@@ -18,12 +18,12 @@ https://review.openstack.org/#/c/457545/
 
 回显中显示db已经从4a482571410f 版本升级到 3650e2s75c45  版本
 
-3.如果升级失败可以直接回退到原始版本
+3.（option）option）如果升级失败可以直接回退到原始版本
 ::
 
   # manila-manage db downgrade 4a482571410f
 
-4.如果代码写的不好，数据表搞坏了，可以登录mysql直接删掉manila表格，重新创建，再同步到稳定的版本的db表
+4.(Option)如果代码写的不好，数据表搞坏了，可以登录mysql直接删掉manila表格，重新创建，再同步到稳定的版本的db表
 ::
 
   # mysql -u root -p
