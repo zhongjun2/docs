@@ -16,3 +16,26 @@
   export OS_IDENTITY_API_VERSION=3
   export OS_USER_DOMAIN_NAME=Default
   export OS_PROJECT_DOMAIN_NAME=Default
+
+保存环境变量
+
+* 方法1
+想要设置成全局的可以保存在 ~/.bashrc中
+
+* 方法2
+也可以新建文档进行保存，比如新建manila_envs文档 
+::
+
+  # vi /root/manila_evns
+  export OS_USERNAME=admin
+  export OS_PASSWORD=nomoresecret
+  export OS_TENANT_NAME=admin
+  export OS_AUTH_URL="http://127.0.0.1/identity"
+  export OS_IDENTITY_API_VERSION=3
+  export OS_USER_DOMAIN_NAME=Default
+  export OS_PROJECT_DOMAIN_NAME=Default
+
+执行如下命令使环境变量生效
+::
+
+  # source /root/manila_evns
