@@ -42,7 +42,7 @@
   mysql>drop database manila;
   mysql>create database manila;
 
- * mysql 的密码默认为 stackdb，在devstack中的local.conf文件中配置
+* mysql 的密码默认为 stackdb，在devstack中的local.conf文件中配置
 
 重新执行同步命令同步db到最新的稳定版本
 ::
