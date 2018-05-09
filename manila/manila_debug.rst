@@ -33,3 +33,7 @@ How to debug manila service
   journalctl -u devstack@m-shr.service -f | ccze
   journalctl -u devstack@n-cpu.service -f | ccze
   https://docs.openstack.org/devstack/latest/systemd.html
+  
+*  manila api log日志查看
+::
+  sudo tail -f /var/log/apache2/manila_api.log | sed -u 's/\\x1b/\o033/g'
