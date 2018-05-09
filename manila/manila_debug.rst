@@ -38,3 +38,10 @@ How to debug manila service
 ::
 
   sudo tail -f /var/log/apache2/manila_api.log | sed -u 's/\\x1b/\o033/g'
+
+
+* 修改python-manilaclient代码后如何生效，进入到python-manilaclient目录运行如下命令
+::
+
+  python setup.py install
+
