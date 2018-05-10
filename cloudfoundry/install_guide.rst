@@ -30,6 +30,25 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
   EIP（1个）：与bosh director绑定，提供公网 IP，用于登录bosh director进行后续cf的部署
 
+  ::
+  
+    $ wget https://releases.hashicorp.com/terraform/0.10.7/terraform_0.10.7_linux_amd64.zip
+    $ unzip terraform_0.10.7_linux_amd64.zip
+    $ mv terraform ~/go/bin/
+    $ git clone https://github.com/cloudfoundry-incubator/bosh-openstack-environment-templates
+    Cloning into 'bosh-openstack-environment-templates'...
+    remote: Counting objects: 167, done.
+    remote: Total 167 (delta 0), reused 0 (delta 0), pack-reused 167
+    Receiving objects: 100% (167/167), 29.61 KiB | 47.00 KiB/s, done.
+    Resolving deltas: 100% (96/96), done.
+    Checking connectivity... done.
+    $ cd bosh-openstack-environment-templates/bosh-init-tf/
+    
+
+
+    
+
+
 * 1.2.准备一台ubuntu 16.04的执行机，用以安装bosh cli和cloudfoundry cli执行部署cf的命令，以及后面部署cf成功后调用cf命令在cf上部署应用
 
 **2.安装bosh director**
