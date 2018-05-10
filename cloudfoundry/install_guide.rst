@@ -76,6 +76,10 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
   创建成功以后要记录好回显的信息，作为后面的bosh director的创建的参数输入
 
+  如果配置有问题，或者想清理已经创建的数据可以使用如下命令进行清理
+  ::
+
+    $ ./terraform destroy
 
   如果terraform创建资源的过程中发现有问题，可以设置如下的全局变量在/tmp/log_otc中查看terraform日志信息
   ::
