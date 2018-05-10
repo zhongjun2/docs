@@ -34,12 +34,6 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
   
 
     $ git clone https://github.com/cloudfoundry-incubator/bosh-openstack-environment-templates
-    Cloning into 'bosh-openstack-environment-templates'...
-    remote: Counting objects: 167, done.
-    remote: Total 167 (delta 0), reused 0 (delta 0), pack-reused 167
-    Receiving objects: 100% (167/167), 29.61 KiB | 47.00 KiB/s, done.
-    Resolving deltas: 100% (96/96), done.
-    Checking connectivity... done.
     $ cd bosh-openstack-environment-templates/bosh-init-tf/
     $ ./generate_ssh_keypair.sh                           //生成bosh.pem秘钥
     $ cp terraform.tfvars.template terraform.tfvars   
