@@ -77,23 +77,23 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
   创建成功以后要记录好回显的信息，作为后面的bosh director的创建的参数输入
 
 
-如果terraform创建资源的过程中发现有问题，可以设置如下的全局变量在/tmp/log_otc中查看terraform日志信息
-::
+  如果terraform创建资源的过程中发现有问题，可以设置如下的全局变量在/tmp/log_otc中查看terraform日志信息
+  ::
 
-  export TF_LOG=DEBUG
-  export OS_DEBUG=1
-  export TF_LOG_PATH=/tmp/log_otc
-  
-也可以指定如下信息设置公有云的全局变量信息
-::
+    export TF_LOG=DEBUG
+    export OS_DEBUG=1
+    export TF_LOG_PATH=/tmp/log_otc
 
-  export OS_USERNAME=user_name
-  export OS_PASSWORD=openstack_password
-  export OS_TENANT_NAME=project_name
-  export OS_AUTH_URL="https://iam.cn-east-2.myhwclouds.com/v3"
-  export OS_IDENTITY_API_VERSION=3
-  export OS_USER_DOMAIN_NAME=domain_name
-  export OS_PROJECT_DOMAIN_NAME=project_domain_name
+  也可以指定如下信息设置公有云的全局变量信息
+  ::
+
+    export OS_USERNAME=user_name
+    export OS_PASSWORD=openstack_password
+    export OS_TENANT_NAME=project_name
+    export OS_AUTH_URL="https://iam.cn-east-2.myhwclouds.com/v3"
+    export OS_IDENTITY_API_VERSION=3
+    export OS_USER_DOMAIN_NAME=domain_name
+    export OS_PROJECT_DOMAIN_NAME=project_domain_name
 
 * 1.2.准备一台ubuntu 16.04的执行机，用以安装bosh cli和cloudfoundry cli执行部署cf的命令，以及后面部署cf成功后调用cf命令在cf上部署应用
 
