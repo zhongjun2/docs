@@ -11,7 +11,7 @@ https://bosh.io/releases/github.com/cloudfoundry/cf-release?all=1
 https://bosh.io/d/github.com/cloudfoundry/cf-release?v=231
 
 
-* 1. 准备运行环境
+** 1. 准备运行环境**
   从安全性考虑，本文所设计的网络环境是 VPC。为了方便部署 Bosh，首先需要准备一台带有公网 IP 跳板机作为部署命令的执行机器。因此，本节需要准备如下资源：
 
   * 1.1.使用terraform创建安装bosh需要的公有云资源
