@@ -18,9 +18,13 @@ https://bosh.io/d/github.com/cloudfoundry/cf-release?v=231
 * 1.1.使用terraform创建安装bosh需要的公有云资源
 
   terraform模板参考：https://github.com/cloudfoundry-incubator/bosh-openstack-environment-templates/tree/master/bosh-init-tf
+
   该模板在公有云上会创建的资源如下：
+
   VPC（1个）：用作整个 Bosh 和 Cloud Foundry 的网络运行环境
+
   Security Group（1个）：为网络环境设置访问权限
+
   EIP（1个）：与bosh director绑定，提供公网 IP，用于登录bosh director进行后续cf的部署
 
 * 1.2.准备一台ubuntu 16.04的执行机，用以安装bosh cli和cloudfoundry cli执行部署cf的命令，以及后面部署cf成功后调用cf命令在cf上部署应用
