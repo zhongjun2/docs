@@ -60,6 +60,12 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
     $ ./terraform init                                     //初始化terraform配置  
     $ ./terraform apply                                    //使用terraform创建资源
 
+如果terraform创建资源的过程中发现有问题，可以设置如下的全局变量查看terraform日志信息
+::
+
+  export TF_LOG=DEBUG
+  export OS_DEBUG=1
+  export TF_LOG_PATH=/tmp/log_otc
 
 * 1.2.准备一台ubuntu 16.04的执行机，用以安装bosh cli和cloudfoundry cli执行部署cf的命令，以及后面部署cf成功后调用cf命令在cf上部署应用
 
