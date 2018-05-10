@@ -32,3 +32,7 @@ https://bosh.io/d/github.com/cloudfoundry/cf-release?v=231
 **2.安装bosh director**
 
 2.1登录到第一步创建的ubuntu机器上
+
+
+
+**3.安装cloudfoundry**
