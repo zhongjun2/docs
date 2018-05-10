@@ -16,6 +16,7 @@ https://bosh.io/d/github.com/cloudfoundry/cf-release?v=231
 从安全性考虑，本文所设计的网络环境是 VPC。为了方便部署 Bosh，首先需要准备一台带有公网 IP 跳板机作为部署命令的执行机器。因此，本节需要准备如下资源：
 
 * 1.1.使用terraform创建安装bosh需要的公有云资源
+
   terraform模板参考：https://github.com/cloudfoundry-incubator/bosh-openstack-environment-templates/tree/master/bosh-init-tf
   该模板在公有云上会创建的资源如下：
   VPC（1个）：用作整个 Bosh 和 Cloud Foundry 的网络运行环境
