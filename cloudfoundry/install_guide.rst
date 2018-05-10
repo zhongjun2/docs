@@ -32,9 +32,7 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
   ::
   
-    $ wget https://releases.hashicorp.com/terraform/0.10.7/terraform_0.10.7_linux_amd64.zip
-    $ unzip terraform_0.10.7_linux_amd64.zip
-    $ mv terraform ~/go/bin/
+
     $ git clone https://github.com/cloudfoundry-incubator/bosh-openstack-environment-templates
     Cloning into 'bosh-openstack-environment-templates'...
     remote: Counting objects: 167, done.
@@ -43,7 +41,22 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
     Resolving deltas: 100% (96/96), done.
     Checking connectivity... done.
     $ cd bosh-openstack-environment-templates/bosh-init-tf/
-    
+    $ ./generate_ssh_keypair.sh                           //生成bosh.pem秘钥
+    $ cp terraform.tfvars.template terraform.tfvars   
+    $ vi terraform.tfvars                                 //修改配置文件中的值为自己公有云上的配置
+    auth_url = "https://iam.cn-east-2.myhwclouds.com/v3"
+    domain_name = "domain_name"
+    user_name = "openstack_user"
+    password = "openstack_password"
+    tenant_name = "cn-east-2"                             //也就是project的名称
+    region_name = "cn-east-2"                       
+    availability_zone = "cn-east-2a"
+
+    ext_net_name = "admin_external_net"                   //在huawei公有云上该值为固定值
+    ext_net_id = "0a2228f2-7f8a-45f1-8e09-9039e1d09975"   //在huawei公有云上该值为固定值
+
+    $ wget https://releases.hashicorp.com/terraform/0.10.7/terraform_0.10.7_linux_amd64.zip
+    $ unzip terraform_0.10.7_linux_amd64.zip
 
 
     
