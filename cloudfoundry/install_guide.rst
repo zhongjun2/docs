@@ -57,9 +57,8 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
     $ wget https://releases.hashicorp.com/terraform/0.10.7/terraform_0.10.7_linux_amd64.zip
     $ unzip terraform_0.10.7_linux_amd64.zip
-
-
-    
+    $ ./terraform init                                     //初始化terraform配置  
+    $ ./terraform apply                                    //使用terraform创建资源
 
 
 * 1.2.准备一台ubuntu 16.04的执行机，用以安装bosh cli和cloudfoundry cli执行部署cf的命令，以及后面部署cf成功后调用cf命令在cf上部署应用
