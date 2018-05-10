@@ -59,13 +59,41 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
     $ unzip terraform_0.10.7_linux_amd64.zip
     $ ./terraform init                                     //初始化terraform配置  
     $ ./terraform apply                                    //使用terraform创建资源
+    ...
+    Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
 
-如果terraform创建资源的过程中发现有问题，可以设置如下的全局变量查看terraform日志信息
+    Outputs:
+
+    default_key_name = bosh
+    default_security_groups = [bosh]
+    external_ip = 160.44.206.37
+    internal_cidr = 10.0.1.0/24
+    internal_gw = 10.0.1.1
+    internal_ip = 10.0.1.10
+    net_dns = [8.8.8.8]
+    net_id = a95cd147-689c-483a-90ca-dae8c2ed938a
+    router_id = bdc24a70-6a56-485e-a733-15612925759b
+
+  创建成功以后要记录好回显的信息，作为后面的bosh director的创建的参数输入
+
+
+如果terraform创建资源的过程中发现有问题，可以设置如下的全局变量在/tmp/log_otc中查看terraform日志信息
 ::
 
   export TF_LOG=DEBUG
   export OS_DEBUG=1
   export TF_LOG_PATH=/tmp/log_otc
+  
+也可以指定如下信息设置公有云的全局变量信息
+::
+
+  export OS_USERNAME=user_name
+  export OS_PASSWORD=openstack_password
+  export OS_TENANT_NAME=project_name
+  export OS_AUTH_URL="https://iam.cn-east-2.myhwclouds.com/v3"
+  export OS_IDENTITY_API_VERSION=3
+  export OS_USER_DOMAIN_NAME=domain_name
+  export OS_PROJECT_DOMAIN_NAME=project_domain_name
 
 * 1.2.准备一台ubuntu 16.04的执行机，用以安装bosh cli和cloudfoundry cli执行部署cf的命令，以及后面部署cf成功后调用cf命令在cf上部署应用
 
