@@ -36,3 +36,15 @@ https://bosh.io/d/github.com/cloudfoundry/cf-release?v=231
 
 
 **3.安装cloudfoundry**
+
+3.1.再次使用terraform创建安装cf的时候需要的共有云资源
+将 `terraform工程 <https://github.com/cloudfoundry-incubator/bosh-openstack-environment-templates/tree/master/cf-deployment-tf>`_下载到执行机上面，配置好terraform全局变量，运行如下命令创建cf所需资源
+::
+
+  $ terraform init <cloned-repo-path>/cf-deployment-tf
+  $ terraform apply <cloned-repo-path>/cf-deployment-tf
+
+创建完成后注意查看回显信息，回显信息中有下面步骤中所需要的网络信息，包括在同一个VPC下创建的三个不同网段的子网信息。
+
+3.2.
+
