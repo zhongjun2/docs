@@ -5,9 +5,6 @@
   # chmod 400 KeyPair-test.pem
   # ssh -i KeyPair-test.pem ubuntu@your_own_elastic_ip
 
- 登录成功
-
-
 * 登录失败可能遇到Permission denied错误
 ::
 
