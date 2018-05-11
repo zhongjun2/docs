@@ -202,3 +202,13 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
 3.2.修改cf-deployment.yml
 
+执行 bosh -e bosh-1 -d cf deploy cf-deployment.yml
+部署
+
+bosh -e bosh-1 -d cf deploy cf-deployment/cf-deployment.yml \
+--vars-store cf-vars.yml \
+-v system_domain=cloudfoundry.com \
+-v haproxy_private_ip=192.168.10.51  \
+-o cf-deployment/operations/openstack.yml \
+-o cf-deployment/operations/use-haproxy.yml
+
