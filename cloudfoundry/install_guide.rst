@@ -106,11 +106,68 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 2.1登录到第一步创建的ubuntu执行机器上
 ::
 
-  $apt-get update
-  $apt-get sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt-dev libxml2-dev libssl-dev libreadline6 libreadline6-dev libyaml-dev libsqlite3-dev sqlite3
-  $ruby -v
+  $ apt-get update
+  $ apt-get sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt-dev libxml2-dev libssl-dev libreadline6 libreadline6-dev libyaml-dev libsqlite3-dev sqlite3
+  $ ruby -v
   ruby 2.2.3p173 (2015-08-18 revision 51636) [x86_64-darwin14]
 
+2.2安装bosh cli
+::
+
+# wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-3.0.1-linux-amd64
+# chmod +x bosh-cli-3.0.1-linux-amd64
+root@ecs-zhongjun:~# sudo mv ~/bosh-cli-3.0.1-linux-amd64 /usr/local/bin/bosh
+root@ecs-zhongjun:~# bosh -v
+version 3.0.1-712bfd7-2018-03-13T23:26:43Z
+
+Succeeded
+
+
+2.3创建director
+
+# cd /root
+# mkdir bosh-1 && cd bosh-1
+# git clone https://github.com/cloudfoundry/bosh-deployment
+# vi bosh-deployment/openstack/cpi.yml                        //修改虚拟机flavor类型为公有云支持的类型
+- type: replace
+  path: /resource_pools/name=vms/cloud_properties?
+  value:
+    instance_type: **s2.large.2**
+    availability_zone: ((az))
+# vi bosh-deployment/openstack/cloud-config.yml
+vm_types:
+- name: default
+  cloud_properties:
+    instance_type: **s2.large.2**
+- name: large
+  cloud_properties:
+    instance_type: **s2.large.8**
+
+$ bosh create-env bosh-deployment/bosh.yml \
+    --state=state.json \
+    --vars-store=creds.yml \
+    -o bosh-deployment/openstack/cpi.yml \
+    -o bosh-deployment/external-ip-with-registry-not-recommended.yml \
+    -v director_name=bosh-1 \
+    -v internal_cidr=10.0.1.0/24 \
+    -v internal_gw=10.0.1.1 \
+    -v internal_ip=10.0.1.10 \
+    -v external_ip=160.44.206.37 \
+    -v auth_url=https://iam.eu-de.otc.t-systems.com/v3 \
+    -v az=eu-de-02 \
+    -v default_key_name=bosh \
+    -v default_security_groups=[bosh] \
+    -v net_id=a95cd147-689c-483a-90ca-dae8c2ed938a \
+    -v openstack_password=password \
+    -v openstack_username=cloud_user \
+    -v openstack_domain=cloud_domamin \
+    -v openstack_project=project_name \
+    -v openstack_state_timeout=30000 \
+    -v state_timeout=30000 \
+    -v private_key=./bosh.pem \
+    -v openstack_flavor=s2.large.2 \
+    -v availability_zone=eu-de-02 \
+    -v region=eu-de
 
 
 **3.安装cloudfoundry**
