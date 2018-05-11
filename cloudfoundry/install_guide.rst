@@ -114,28 +114,28 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 2.2安装bosh cli
 ::
 
-# wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-3.0.1-linux-amd64
-# chmod +x bosh-cli-3.0.1-linux-amd64
-root@ecs-zhongjun:~# sudo mv ~/bosh-cli-3.0.1-linux-amd64 /usr/local/bin/bosh
-root@ecs-zhongjun:~# bosh -v
-version 3.0.1-712bfd7-2018-03-13T23:26:43Z
+  $ wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-3.0.1-linux-amd64
+  $ chmod +x bosh-cli-3.0.1-linux-amd64
+  $ sudo mv ~/bosh-cli-3.0.1-linux-amd64 /usr/local/bin/bosh
+  $ bosh -v
+  version 3.0.1-712bfd7-2018-03-13T23:26:43Z
 
-Succeeded
+  Succeeded
 
 
 2.3创建director
 ::
 
-  # cd /root
-  # mkdir bosh-1 && cd bosh-1
-  # git clone https://github.com/cloudfoundry/bosh-deployment
-  # vi bosh-deployment/openstack/cpi.yml                        //修改虚拟机flavor类型为公有云支持的类型
+  $ cd /root
+  $ mkdir bosh-1 && cd bosh-1
+  $ git clone https://github.com/cloudfoundry/bosh-deployment
+  $ vi bosh-deployment/openstack/cpi.yml                        //修改虚拟机flavor类型为公有云支持的类型
   - type: replace
     path: /resource_pools/name=vms/cloud_properties?
     value:
       instance_type: **s2.large.2**
       availability_zone: ((az))
-  # vi bosh-deployment/openstack/cloud-config.yml
+  $ vi bosh-deployment/openstack/cloud-config.yml
   vm_types:
   - name: default
     cloud_properties:
