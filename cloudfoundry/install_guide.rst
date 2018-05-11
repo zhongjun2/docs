@@ -16,9 +16,10 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
 **1. 准备运行环境**
 
-从安全性考虑，本文所设计的网络环境是 VPC。为了方便部署 Bosh，首先需要准备一台带有公网 IP 跳板机作为部署命令的执行机器。因此，本节需要准备如下资源：
+* 1.1.准备一台ubuntu 16.04的执行机，用以安装bosh cli和cloudfoundry cli执行部署cf的命令，以及后面部署cf成功后调用cf命令在cf上部署应用，登录这台执行机进行1.2步骤的操作
 
-* 1.1.使用terraform创建安装bosh需要的公有云资源
+
+* 1.2.使用terraform创建安装bosh需要的公有云资源
 
   terraform模板参考：https://github.com/cloudfoundry-incubator/bosh-openstack-environment-templates/tree/master/bosh-init-tf
 
@@ -93,11 +94,11 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
     export OS_USER_DOMAIN_NAME=domain_name
     export OS_PROJECT_DOMAIN_NAME=project_domain_name
 
-* 1.2.准备一台ubuntu 16.04的执行机，用以安装bosh cli和cloudfoundry cli执行部署cf的命令，以及后面部署cf成功后调用cf命令在cf上部署应用
+
 
 **2.安装bosh director**
 
-2.1登录到第一步创建的ubuntu机器上
+2.1登录到第一步创建的ubuntu执行机器上
 
 
 
