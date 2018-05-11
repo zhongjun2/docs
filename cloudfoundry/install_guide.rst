@@ -49,6 +49,9 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
     ext_net_name = "admin_external_net"                   //在huawei公有云上该值为固定值
     ext_net_id = "0a2228f2-7f8a-45f1-8e09-9039e1d09975"   //在huawei公有云上该值为固定值
+    
+    # in case your OpenStack needs custom nameservers
+    # dns_nameservers = 8.8.8.8                           //如果后续cf的出口要用私有域名，那么这里的dns服务器地址一定要配置成私有dns服务器对应的dns ip，否则后面的私有域名无法解析，也就无法被访问，也就会导致登录不上cf。
 
     $ wget https://releases.hashicorp.com/terraform/0.10.7/terraform_0.10.7_linux_amd64.zip
     $ unzip terraform_0.10.7_linux_amd64.zip
