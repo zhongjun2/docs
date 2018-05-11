@@ -74,7 +74,7 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
   如果配置有问题，或者想清理已经创建的数据可以使用如下命令进行清理
   ::
 
-    $ ./terraform destroy
+    $./terraform destroy
 
   如果terraform创建资源的过程中发现有问题，可以设置如下的全局变量在/tmp/log_otc中查看terraform日志信息
   ::
@@ -99,6 +99,12 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 **2.安装bosh director**
 
 2.1登录到第一步创建的ubuntu执行机器上
+::
+
+  $apt-get update
+  $apt-get sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt-dev libxml2-dev libssl-dev libreadline6 libreadline6-dev libyaml-dev libsqlite3-dev sqlite3
+  $ruby -v
+  ruby 2.2.3p173 (2015-08-18 revision 51636) [x86_64-darwin14]
 
 
 
