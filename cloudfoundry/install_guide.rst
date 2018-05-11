@@ -39,13 +39,13 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
     $ ./generate_ssh_keypair.sh                           //生成bosh.pem秘钥
     $ cp terraform.tfvars.template terraform.tfvars   
     $ vi terraform.tfvars                                 //修改配置文件中的值为自己公有云上的配置
-    auth_url = "https://iam.cn-east-2.myhwclouds.com/v3"
+    auth_url = "https://iam.eu-de.otc.t-systems.com/v3"
     domain_name = "domain_name"
     user_name = "openstack_user"
     password = "openstack_password"
-    tenant_name = "cn-east-2"                             //也就是project的名称
-    region_name = "cn-east-2"                       
-    availability_zone = "cn-east-2a"
+    tenant_name = "eu-de"                             //也就是project的名称
+    region_name = "eu-de"                       
+    availability_zone = "eu-de-02"
 
     ext_net_name = "admin_external_net"                   //在huawei公有云上该值为固定值
     ext_net_id = "0a2228f2-7f8a-45f1-8e09-9039e1d09975"   //在huawei公有云上该值为固定值
@@ -94,7 +94,7 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
     export OS_USERNAME=user_name
     export OS_PASSWORD=openstack_password
     export OS_TENANT_NAME=project_name
-    export OS_AUTH_URL="https://iam.cn-east-2.myhwclouds.com/v3"
+    export OS_AUTH_URL="https://iam.eu-de.otc.t-systems.com/v3"
     export OS_IDENTITY_API_VERSION=3
     export OS_USER_DOMAIN_NAME=domain_name
     export OS_PROJECT_DOMAIN_NAME=project_domain_name
