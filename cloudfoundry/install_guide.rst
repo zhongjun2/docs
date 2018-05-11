@@ -169,6 +169,7 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
       -v openstack_flavor=s2.large.2 \
       -v availability_zone=eu-de-02 \
       -v region=eu-de
+
   $export BOSH_ENVIRONMENT=160.44.206.37
   # Configure local alias
   $ bosh alias-env bosh-1 -e 119.3.21.3 --ca-cert <(bosh int ./creds.yml --path /director_ssl/ca)
@@ -184,6 +185,7 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
   Logged in to '119.3.21.3'
 
   Succeeded
+  $ bosh envs
 
 
 **3.安装cloudfoundry**
