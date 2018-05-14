@@ -13,7 +13,7 @@ https://bosh.io/d/github.com/cloudfoundry/cf-release?v=231
 
 bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
-..注意:  cf-release的最后一个版本是v287，后续被cf-deployment替代，也可以使用 `cf-deployment-transition <https://github.com/cloudfoundry/cf-deployment-transition>`_ ，将cf-release工程迁移到cf-deployment
+**注意**:  cf-release的最后一个版本是v287，后续被cf-deployment替代，也可以使用 `cf-deployment-transition <https://github.com/cloudfoundry/cf-deployment-transition>`_ ，将cf-release工程迁移到cf-deployment
 
   Notice: cf-release is now end-of-life. The final version of cf-release is v287.
 
