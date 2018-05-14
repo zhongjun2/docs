@@ -1,4 +1,7 @@
-add-blob               Add blob                                           https://bosh.io/docs/cli-v2#add-blob
+
+::
+
+  add-blob               Add blob                                           https://bosh.io/docs/cli-v2#add-blob
   alias-env              Alias environment to save URL and CA certificate   https://bosh.io/docs/cli-v2#alias-env
   attach-disk            Attaches disk to an instance                       https://bosh.io/docs/cli-v2#attach-disk
   blobs                  List blobs                                         https://bosh.io/docs/cli-v2#blobs
