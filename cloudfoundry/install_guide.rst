@@ -235,7 +235,7 @@ https://bosh.io/releases/github.com/cloudfoundry/cf-release?version=250#usage
 
 
 
-bosh -e bosh-1 -d cf deploy cf-deployment/cf-deployment.yml \
+bosh -e bosh-1 -d openstack-cf deploy cf-deployment/cf-deployment.yml \
 --vars-store cf-vars.yml \
 -v system_domain=cloudfoundry.com \
 -v haproxy_private_ip=192.168.10.51  \
