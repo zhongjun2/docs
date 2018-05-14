@@ -204,9 +204,33 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 创建完成后注意查看回显信息，回显信息中有下面步骤中所需要的网络信息，包括在同一个VPC下创建的三个不同网段的子网信息。
 
 3.2.修改cf-deployment.yml
+3.2.1修改director uuid
+3.2.2修改net_id名称为创建director时所配置的子网id
+3.2.3修改域名example.com为自己配置的域名
+3.2.4修改security group安全组为创建director时候的安全组
 
-执行 bosh -e bosh-1 -d cf deploy cf-deployment.yml
-部署
+3.3上传部署cf的时候需要用到的stemcell和release
+
+可以将镜像配置配置到yml文件中，也可以将通过upload-release命令上传到director中，注意release的版本要与stemcell匹配，比如下面的release使用说明中就会看到对应的需要哪个版本的stemcell
+https://bosh.io/releases/github.com/cloudfoundry/cf-release?version=250#usage
+
+::
+
+  bosh upload-release --sha1 456a52f8a03728708252910eef90dc490bcb76a3 \
+  https://bosh.io/d/github.com/cloudfoundry/cf-release?v=250
+
+上传镜像
+::
+
+  bosh upload-stemcell --sha1 b92dcc011bc3a742b2f90be40df12adecc633f8b \
+  https://s3.amazonaws.com/bosh-core-stemcells/openstack/bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
+
+3.4执行如下命令进行部署名叫cf的cloudfoundry环境
+::
+
+  bosh -e bosh-1 -d cf deploy cf-deployment.yml
+
+
 
 bosh -e bosh-1 -d cf deploy cf-deployment/cf-deployment.yml \
 --vars-store cf-vars.yml \
