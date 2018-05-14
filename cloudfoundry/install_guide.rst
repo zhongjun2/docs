@@ -219,14 +219,14 @@ https://bosh.io/releases/github.com/cloudfoundry/cf-release?version=250#usage
 
 ::
 
-  bosh upload-release --sha1 456a52f8a03728708252910eef90dc490bcb76a3 \
+  bosh upload-release --sha1 f6b118483a972d0f619af707cf4a55c20e27f361 \
   https://bosh.io/d/github.com/cloudfoundry/cf-release?v=250
 
 上传镜像
 ::
 
-  bosh upload-stemcell --sha1 b92dcc011bc3a742b2f90be40df12adecc633f8b \
-  https://s3.amazonaws.com/bosh-core-stemcells/openstack/bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
+  wget https://s3.amazonaws.com/bosh-core-stemcells/openstack/bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
+  bosh upload-stemcell bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
 
 3.4执行如下命令进行部署名叫cf的cloudfoundry环境
 ::
