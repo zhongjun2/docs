@@ -15,10 +15,7 @@ https://bosh.io/d/github.com/cloudfoundry/cf-release?v=231
 
 bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
-**注意**:  cf-release的最后一个版本是v287，后续被 `cf-deployment <https://github.com/cloudfoundry/cf-deployment.git>`_ 替代，也可以使用 `cf-deployment-transition <https://github.com/cloudfoundry/cf-deployment-transition>`_ ，将cf-release工程迁移到cf-deployment
 
-  Notice: cf-release is now end-of-life. The final version of cf-release is v287.
-cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-deployment/releases
 
 **1. 准备运行环境**
 
@@ -197,7 +194,12 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 
 **3.安装cloudfoundry**
 
-**老版本的部署方法**
+**注意**:  老方法cf-release的最后一个版本是v287，后续被 `cf-deployment <https://github.com/cloudfoundry/cf-deployment.git>`_ 替代，也可以使用 `cf-deployment-transition <https://github.com/cloudfoundry/cf-deployment-transition>`_ ，将cf-release工程迁移到cf-deployment
+
+Notice: cf-release is now end-of-life. The final version of cf-release is v287.
+cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-deployment/releases
+
+**老方法使用cf-release进行部署**
 
 * 3.1.修改 `cf-deployment.yml <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cf-deployment.yml>`_
 
@@ -229,7 +231,7 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
   bosh -e bosh-1 -d openstack-cf deploy cf-deployment.yml
 
 
-**新版本 cf-deployment的部署方法**
+**新方法使用cf-deployment进行部署**
 
 * 3.1.再次使用terraform创建安装cf的时候需要的共有云资源
 将 `terraform工程 <https://github.com/cloudfoundry-incubator/bosh-openstack-environment-templates/tree/master/cf-deployment-tf>`_下载到执行机上面，配置好terraform全局变量，运行如下命令创建cf所需资源
