@@ -231,7 +231,7 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 
   bosh -e bosh-1 -d openstack-cf deploy cf-deployment.yml
 
-* 3.4登录cf环境，用户名为admin，密码为admin
+* 3.4执行如下命令，登录cloud foundry，其中“example.com”根据实际域名替换（前面配置的DNS就是example.com，因此不用更改），默认用户名为admin，默认密码为admin。登录后显示如下
 ::
 
   # cf login -a https://api.example.com --skip-ssl-validation
