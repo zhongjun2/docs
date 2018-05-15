@@ -200,6 +200,7 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 **老版本的部署方法**
 
 * 3.1.修改 `cf-deployment.yml <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cf-deployment.yml>`_
+
   - 3.1.1修改director uuid
   - 3.1.2修改net_id名称为创建director时所配置的子网id
   - 3.1.3修改域名example.com为自己配置的域名
