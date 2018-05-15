@@ -192,7 +192,9 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
 **3.安装cloudfoundry**
 
-**注意**:  老方法 `cf-release <https://bosh.io/releases/github.com/cloudfoundry/cf-release?all=1>`_ 的最后一个版本是v287，后续被 `cf-deployment <https://github.com/cloudfoundry/cf-deployment.git>`_ 替代，也可以使用 `cf-deployment-transition <https://github.com/cloudfoundry/cf-deployment-transition>`_ ，将cf-release工程迁移到cf-deployment
+.. 注意::
+
+  老方法 `cf-release <https://bosh.io/releases/github.com/cloudfoundry/cf-release?all=1>`_ 的最后一个版本是v287，后续被 `cf-deployment <https://github.com/cloudfoundry/cf-deployment.git>`_ 替代，也可以使用 `cf-deployment-transition <https://github.com/cloudfoundry/cf-deployment-transition>`_ ，将cf-release工程迁移到cf-deployment
 
 Notice: cf-release is now end-of-life. The final version of cf-release is v287.
 cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-deployment/releases
