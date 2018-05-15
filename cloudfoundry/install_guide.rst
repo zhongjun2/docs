@@ -228,11 +228,26 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 
   bosh -e bosh-1 -d openstack-cf deploy cf-deployment.yml
 
-* 3.5登录cf环境
+* 3.5登录cf环境，用户名为admin，密码为admin
 ::
 
-  bosh cf login -a https://api.example.com --skip-ssl-validation
+  # cf login -a https://api.example.com --skip-ssl-validation
+  API endpoint: https://api.example.com
 
+  Email> admin
+
+  Password>
+  Authenticating...
+  OK
+
+  Targeted org mycloud
+
+
+
+  API endpoint:   https://api.example.com (API version: 2.51.0)
+  User:           admin
+  Org:            mycloud
+  Space:          No space targeted, use 'cf target -s SPACE'
 
 **新方法使用cf-deployment进行部署**
 
