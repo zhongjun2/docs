@@ -50,7 +50,7 @@
 * 4.推送应用
 ::
 
-  $ # cf push myapp -b php_buildpack
+  $ cf push myapp -b php_buildpack
   Pushing from manifest to org mycloud / space development as admin...
   Using manifest file /root/bosh-1/cf-php-demo/manifest.yml
 
