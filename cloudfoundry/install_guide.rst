@@ -197,7 +197,39 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 
 **3.安装cloudfoundry**
 
-3.1.再次使用terraform创建安装cf的时候需要的共有云资源
+**老版本的部署方法**
+
+* 3.1.修改 `cf-deployment.yml <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cf-deployment.yml>`_
+  - 3.1.1修改director uuid
+  - 3.1.2修改net_id名称为创建director时所配置的子网id
+  - 3.1.3修改域名example.com为自己配置的域名
+  - 3.1.4修改security group安全组为创建director时候的安全组
+
+* 3.2上传部署cf的时候需要用到的stemcell和release
+
+  可以将镜像配置配置到yml文件中，也可以将通过upload-release命令上传到director中，注意release的版本要与stemcell匹配，
+  比如下面的release使用说明中就会看到对应的需要哪个版本的stemcell
+  https://bosh.io/releases/github.com/cloudfoundry/cf-release?version=250#usage
+
+  ::
+
+    bosh upload-release --sha1 f6b118483a972d0f619af707cf4a55c20e27f361 \
+    https://bosh.io/d/github.com/cloudfoundry/cf-release?v=250
+
+* 3.3上传镜像
+::
+
+  wget https://s3.amazonaws.com/bosh-core-stemcells/openstack/bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
+  bosh upload-stemcell bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
+
+* 3.4执行如下命令，使用 `cf-deployment.yml <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cf-deployment.yml>`_ 的配置进行部署名叫openstack-cf的cloudfoundry环境
+::
+
+  bosh -e bosh-1 -d openstack-cf deploy cf-deployment.yml
+
+
+**新版本 cf-deployment的部署方法**
+* 3.1.再次使用terraform创建安装cf的时候需要的共有云资源
 将 `terraform工程 <https://github.com/cloudfoundry-incubator/bosh-openstack-environment-templates/tree/master/cf-deployment-tf>`_下载到执行机上面，配置好terraform全局变量，运行如下命令创建cf所需资源
 ::
 
@@ -205,34 +237,6 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
   $ terraform apply <cloned-repo-path>/cf-deployment-tf
 
 创建完成后注意查看回显信息，回显信息中有下面步骤中所需要的网络信息，包括在同一个VPC下创建的三个不同网段的子网信息。
-
-3.2.修改cf-deployment.yml
-3.2.1修改director uuid
-3.2.2修改net_id名称为创建director时所配置的子网id
-3.2.3修改域名example.com为自己配置的域名
-3.2.4修改security group安全组为创建director时候的安全组
-
-3.3上传部署cf的时候需要用到的stemcell和release
-
-可以将镜像配置配置到yml文件中，也可以将通过upload-release命令上传到director中，注意release的版本要与stemcell匹配，比如下面的release使用说明中就会看到对应的需要哪个版本的stemcell
-https://bosh.io/releases/github.com/cloudfoundry/cf-release?version=250#usage
-
-::
-
-  bosh upload-release --sha1 f6b118483a972d0f619af707cf4a55c20e27f361 \
-  https://bosh.io/d/github.com/cloudfoundry/cf-release?v=250
-
-上传镜像
-::
-
-  wget https://s3.amazonaws.com/bosh-core-stemcells/openstack/bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
-  bosh upload-stemcell bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
-
-3.4执行如下命令进行部署名叫cf的cloudfoundry环境
-::
-
-  bosh -e bosh-1 -d cf deploy cf-deployment.yml
-
 
 
 bosh -e bosh-1 -d openstack-cf deploy cf-deployment/cf-deployment.yml \
