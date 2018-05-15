@@ -1,0 +1,20 @@
+
+::
+
+  # cf login -a https://api.example.com --skip-ssl-validation
+  API endpoint: https://api.example.com
+
+  Email> admin
+
+  Password>
+  Authenticating...
+  OK
+
+  Targeted org mycloud
+
+
+
+  API endpoint:   https://api.example.com (API version: 2.51.0)
+  User:           admin
+  Org:            mycloud
+  Space:          No space targeted, use 'cf target -s SPACE'
