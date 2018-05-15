@@ -1,17 +1,17 @@
 compilation:
   cloud_properties:
-    instance_type: s1.large
+    instance_type: s2.large.2
   network: cf1
   reuse_compilation_vms: true
   workers: 6 
-director_uuid: your_own_director_uuid
+director_uuid: your_own_bosh_director_uuid
 jobs:
 - instances: 1
   name: consul_z1
   networks:
   - name: cf1
     static_ips:
-    - replace_by_a_private_ip_1
+    - 10.0.1.142
   persistent_disk: 1024
   properties:
     consul:
@@ -57,13 +57,13 @@ jobs:
   networks:
   - name: floating
     static_ips:
-    - replace_by_a_public_ip_1
+    - your_own_public_ip
   - default:
     - dns
     - gateway
     name: cf1
     static_ips:
-    - replace_by_a_private_ip_2
+    - 10.0.1.130
   properties:
     ha_proxy:
       ssl_pem: '-----BEGIN RSA PRIVATE KEY-----
@@ -176,7 +176,7 @@ jobs:
     router:
       servers:
         z1:
-        - replace_by_a_private_ip_3
+        - 10.0.1.135
         z2: []
   resource_pool: router_z1
   templates:
@@ -192,7 +192,7 @@ jobs:
   networks:
   - name: cf1
     static_ips:
-    - replace_by_a_private_ip_4
+    - 10.0.1.132
   properties:
     metron_agent:
       zone: z1
@@ -227,7 +227,7 @@ jobs:
   networks:
   - name: cf1
     static_ips:
-    - replace_by_a_private_ip_5
+    - 10.0.1.138
   persistent_disk: 10024
   properties:
     metron_agent:
@@ -280,7 +280,7 @@ jobs:
   networks:
   - name: cf1
     static_ips:
-    - replace_by_a_private_ip_6
+    - 10.0.1.133
   persistent_disk: 102400
   properties:
     consul:
@@ -347,7 +347,7 @@ jobs:
   networks:
   - name: cf1
     static_ips:
-    - replace_by_a_private_ip_7
+    - 10.0.1.134
   persistent_disk: 4096
   properties:
     metron_agent:
@@ -385,7 +385,7 @@ jobs:
     uaa:
       proxy:
         servers:
-        - replace_by_a_private_ip_3
+        - 10.0.1.135
   resource_pool: medium_z1
   templates:
   - name: uaa
@@ -425,7 +425,7 @@ jobs:
     uaa:
       proxy:
         servers:
-        - replace_by_a_private_ip_3
+        - 10.0.1.135
   resource_pool: medium_z2
   templates:
   - name: uaa
@@ -452,10 +452,10 @@ jobs:
     metron_agent:
       zone: z1
     nfs_server:
-      address: replace_by_a_private_ip_6
+      address: 10.0.1.133
       allow_from_entries:
-      - 10.0.0.0/24
-      - 10.0.0.0/24
+      - 10.0.1.0/24
+      - 10.0.1.0/24
       share: null
     route_registrar:
       routes:
@@ -512,10 +512,10 @@ jobs:
     metron_agent:
       zone: z2
     nfs_server:
-      address: replace_by_a_private_ip_6
+      address: 10.0.1.133
       allow_from_entries:
-      - 10.0.0.0/24
-      - 10.0.0.0/24
+      - 10.0.1.0/24
+      - 10.0.1.0/24
       share: null
     route_registrar:
       routes:
@@ -579,10 +579,10 @@ jobs:
     metron_agent:
       zone: z1
     nfs_server:
-      address: replace_by_a_private_ip_6
+      address: 10.0.1.133
       allow_from_entries:
-      - 10.0.0.0/24
-      - 10.0.0.0/24
+      - 10.0.1.0/24
+      - 10.0.1.0/24
       share: null
   resource_pool: small_z1
   templates:
@@ -604,10 +604,10 @@ jobs:
     metron_agent:
       zone: z2
     nfs_server:
-      address: replace_by_a_private_ip_6
+      address: 10.0.1.133
       allow_from_entries:
-      - 10.0.0.0/24
-      - 10.0.0.0/24
+      - 10.0.1.0/24
+      - 10.0.1.0/24
       share: null
   resource_pool: small_z2
   templates:
@@ -884,7 +884,7 @@ jobs:
   networks:
   - name: cf1
     static_ips:
-    - replace_by_a_private_ip_3
+    - 10.0.1.135
   properties:
     consul:
       agent:
@@ -952,42 +952,42 @@ meta:
 name: openstack-cf
 networks:
 - cloud_properties:
-    net_id: e9dd6eca-5976-4a92-9541-5c2ad10ac146
+    net_id: a95cd147-689c-483a-90ca-dae8c2ed938a
     security_groups:
-    - bosh-cloud
+    - bosh
   name: floating
   type: vip
 - name: cf1
   subnets:
   - cloud_properties:
-      net_id: e9dd6eca-5976-4a92-9541-5c2ad10ac146
+      net_id: a95cd147-689c-483a-90ca-dae8c2ed938a
       security_groups:
-      - bosh-cloud
+      - bosh
     dns:
-    - 10.0.0.250
-    gateway: 10.0.0.1
-    range: 10.0.0.0/24
+    - 10.0.1.250
+    gateway: 10.0.1.1
+    range: 10.0.1.0/24
     reserved:
-    - 10.0.0.2 - 10.0.0.100
-    - 10.0.0.200 - 10.0.0.254
+    - 10.0.1.2 - 10.0.1.100
+    - 10.0.1.200 - 10.0.1.254
     static:
-    - replace_by_a_private_ip_2 - 10.0.0.175
+    - 10.0.1.130 - 10.0.1.175
   type: manual
 - name: cf2
   subnets:
   - cloud_properties:
-      net_id: e9dd6eca-5976-4a92-9541-5c2ad10ac146
+      net_id: a95cd147-689c-483a-90ca-dae8c2ed938a
       security_groups:
-      - bosh-cloud
+      - bosh
     dns:
-    - 10.0.0.250
-    gateway: 10.0.0.1
-    range: 10.0.0.0/24
+    - 10.0.1.250
+    gateway: 10.0.1.1
+    range: 10.0.1.0/24
     reserved:
-    - 10.0.0.2 - 10.0.0.100
-    - 10.0.0.200 - 10.0.0.254
+    - 10.0.1.2 - 10.0.1.100
+    - 10.0.1.200 - 10.0.1.254
     static:
-    - replace_by_a_private_ip_2 - 10.0.0.175
+    - 10.0.1.130 - 10.0.1.175
   type: manual
 properties:
   acceptance_tests: null
@@ -1220,7 +1220,7 @@ properties:
       secret: blobstore-secret
       username: blobstore-username
   ccdb:
-    address: replace_by_a_private_ip_7
+    address: 10.0.1.134
     databases:
     - name: ccdb
       tag: cc
@@ -1236,7 +1236,7 @@ properties:
       log_level: null
       servers:
         lan:
-        - replace_by_a_private_ip_1
+        - 10.0.1.142
     agent_cert: '-----BEGIN CERTIFICATE-----
 
       MIIEITCCAgugAwIBAgIQfadXWu38R5ruERrjaeVEyzALBgkqhkiG9w0BAQswEzER
@@ -1460,7 +1460,7 @@ properties:
 '
   databases:
     additional_config: null
-    address: replace_by_a_private_ip_7
+    address: 10.0.1.134
     collect_statement_statistics: null
     databases:
     - citext: true
@@ -1524,13 +1524,13 @@ properties:
     enabled: true
   etcd:
     machines:
-    - replace_by_a_private_ip_5
+    - 10.0.1.138
     peer_require_ssl: false
     require_ssl: false
   etcd_metrics_server:
     nats:
       machines:
-      - replace_by_a_private_ip_4
+      - 10.0.1.132
       password: admin
       username: admin
   ha_proxy: null
@@ -1544,7 +1544,7 @@ properties:
     debug: false
     etcd:
       machines:
-      - replace_by_a_private_ip_5
+      - 10.0.1.138
     maxRetainedLogMessages: 100
     outgoing_dropsonde_port: 8081
     tls:
@@ -1594,7 +1594,7 @@ properties:
   nats:
     debug: false
     machines:
-    - replace_by_a_private_ip_4
+    - 10.0.1.132
     monitor_port: 0
     password: admin
     port: 4222
@@ -1602,10 +1602,10 @@ properties:
     trace: false
     user: admin
   nfs_server:
-    address: replace_by_a_private_ip_6
+    address: 10.0.1.133
     allow_from_entries:
-    - 10.0.0.0/24
-    - 10.0.0.0/24
+    - 10.0.1.0/24
+    - 10.0.1.0/24
     share: null
   request_timeout_in_seconds: 900
   router:
@@ -1741,7 +1741,7 @@ properties:
     user: null
     zones: null
   uaadb:
-    address: replace_by_a_private_ip_7
+    address: 10.0.1.134
     databases:
     - name: uaadb
       tag: uaa
@@ -1756,7 +1756,7 @@ releases:
   version: latest
 resource_pools:
 - cloud_properties:
-    instance_type: s1.medium
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1764,9 +1764,9 @@ resource_pools:
   network: cf1
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest
+    version: 3312.12
 - cloud_properties:
-    instance_type: s1.medium
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1774,9 +1774,9 @@ resource_pools:
   network: cf2
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 - cloud_properties:
-    instance_type: s1.large
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1784,9 +1784,9 @@ resource_pools:
   network: cf1
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 - cloud_properties:
-    instance_type: s1.large
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1794,9 +1794,9 @@ resource_pools:
   network: cf2
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 - cloud_properties:
-    instance_type: s1.large
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1804,9 +1804,9 @@ resource_pools:
   network: cf1
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 - cloud_properties:
-    instance_type: s1.large
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1814,9 +1814,9 @@ resource_pools:
   network: cf2
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 - cloud_properties:
-    instance_type: s1.large
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1824,9 +1824,9 @@ resource_pools:
   network: cf1
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 - cloud_properties:
-    instance_type: s1.large
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1834,9 +1834,9 @@ resource_pools:
   network: cf2
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 - cloud_properties:
-    instance_type: s1.large
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1844,9 +1844,9 @@ resource_pools:
   network: cf1
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 - cloud_properties:
-    instance_type: s1.large
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1854,9 +1854,9 @@ resource_pools:
   network: cf2
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 - cloud_properties:
-    instance_type: s1.medium
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1864,9 +1864,9 @@ resource_pools:
   network: cf1
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 - cloud_properties:
-    instance_type: s1.large
+    instance_type: s2.large.2
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
@@ -1874,7 +1874,7 @@ resource_pools:
   network: cf1
   stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest 
+    version: 3312.12 
 update:
   canaries: 1
   canary_watch_time: 30000-600000
