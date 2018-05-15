@@ -43,7 +43,7 @@
     memory: 128M
     instances: 1
     host: cf-php-demo
-    domain: **example.com**
+    domain: example.com
     path: .
     buildpack: https://github.com/dmikusa-pivotal/cf-php-apache-buildpack.git
 
