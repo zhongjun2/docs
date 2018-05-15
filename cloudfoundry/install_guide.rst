@@ -229,6 +229,7 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 
 
 **新版本 cf-deployment的部署方法**
+
 * 3.1.再次使用terraform创建安装cf的时候需要的共有云资源
 将 `terraform工程 <https://github.com/cloudfoundry-incubator/bosh-openstack-environment-templates/tree/master/cf-deployment-tf>`_下载到执行机上面，配置好terraform全局变量，运行如下命令创建cf所需资源
 ::
