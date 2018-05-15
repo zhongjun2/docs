@@ -205,6 +205,15 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 Notice: cf-release is now end-of-life. The final version of cf-release is v287.
 cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-deployment/releases
 
+安装cf cli
+::
+
+  $ wget -c "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" -O cf-cli_6.33.0_linux_x86-64.tgz
+  $ tar -xzvf cf-cli_6.33.0_linux_x86-64.tgz -C /usr/local/bin
+  $  cf -v
+  cf version 6.36.1+e3799ad7e.2018-04-04
+  
+
 **老方法使用cf-release进行部署**
 
 * 3.1.修改 `cf-deployment.yml <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cf-deployment.yml>`_
