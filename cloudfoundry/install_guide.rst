@@ -241,7 +241,7 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
     wget https://s3.amazonaws.com/bosh-core-stemcells/openstack/bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
     bosh upload-stemcell bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
 
-* 3.3执行如下命令，使用 `cf-deployment.yml <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cf-deployment.yml>`_ 的配置进行部署名叫openstack-cf的cloudfoundry环境。创建cf成功的 `回显 <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cli-echo/deploy-cf.rst>`_ 为success表明部署成功。其中创建了 `15台虚拟机 <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cli-echo/cf-vms.rst>`_
+* 3.3执行如下命令，使用 `cf-deployment.yml <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cf-deployment.yml>`_ 的配置进行部署名叫openstack-cf的cloudfoundry环境。 `创建cf成功的回显 <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cli-echo/deploy-cf.rst>`_ 为success表明部署成功。其中创建了 `15台虚拟机 <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cli-echo/cf-vms.rst>`_
 ::
 
   bosh -e bosh-1 -d openstack-cf deploy cf-deployment.yml
