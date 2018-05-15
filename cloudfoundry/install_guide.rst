@@ -263,11 +263,53 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 
 创建完成后注意查看回显信息，回显信息中有下面步骤中所需要的网络信息，包括在同一个VPC下创建的三个不同网段的子网信息。
 
+* 3.2下载cf-deployment工程，也可以下载 `cf-deployment的历史版本 <https://github.com/cloudfoundry/cf-deployment/releases>`_
+::
 
-bosh -e bosh-1 -d openstack-cf deploy cf-deployment/cf-deployment.yml \
---vars-store cf-vars.yml \
--v system_domain=cloudfoundry.com \
--v haproxy_private_ip=192.168.10.51  \
--o cf-deployment/operations/openstack.yml \
--o cf-deployment/operations/use-haproxy.yml
+  git clone https://github.com/cloudfoundry/cf-deployment.git
+
+* 3.3 修改instance_type为公有云自己的instance_type。修改文件为iaas-support/openstack/cloud-config.yml
+
+* 3.4 上传stemcell镜像文件
+::
+
+  cd /root/bosh-1/
+  wget https://s3.amazonaws.com/bosh-core-stemcells/openstack/bosh-stemcell-3541.10-openstack-kvm-ubuntu-trusty-go_agent.tgz
+  bosh upload-stemcell bosh-stemcell-3541.10-openstack-kvm-ubuntu-trusty-go_agent.tgz
+
+
+* 3.5 指定cf deployment的相关配置信息，包括AZ域，子网信息为3.1创建的子网信息。
+::
+
+  cd /root/bosh-1
+  bosh update-cloud-config \
+       -v availability_zone1="eu-de-02" \
+       -v availability_zone2="eu-de-02" \
+       -v availability_zone3="eu-de-02" \
+       -v network_id1="f863e039-c188-45e0-97f0-ba5d2b535672" \
+       -v network_id2="2acd71a7-4cdc-4472-a3f4-86438ad2521b" \
+       -v network_id3="f57eec08-4e7a-4375-9783-339c937e4f22" \
+       cf-deployment/iaas-support/openstack/cloud-config.yml
+
+
+* 3.6 部署cloudfoundry
+方案一：以下为部署带loadbalance服务的cf方案
+::
+
+  bosh -d cf deploy cf-deployment/cf-deployment.yml \
+       -o cf-deployment/operations/use-compiled-releases.yml \
+       -o cf-deployment/operations/openstack.yml \
+       --vars-store cf-vars.yml \
+       -v system_domain="cloudfoundry.com"
+
+
+方案二：以下为部署不带loadbalance服务的cf方案，使用haproxy替代
+::
+
+  bosh -e bosh-1 -d openstack-cf deploy cf-deployment/cf-deployment.yml \
+  --vars-store cf-vars.yml \
+  -v system_domain=cloudfoundry.com \
+  -v haproxy_private_ip=192.168.10.51  \
+  -o cf-deployment/operations/openstack.yml \
+  -o cf-deployment/operations/use-haproxy.yml
 
