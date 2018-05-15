@@ -192,7 +192,7 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
 **3.安装cloudfoundry**
 
-.. 注意::
+**注意**
 
   老方法 `cf-release <https://bosh.io/releases/github.com/cloudfoundry/cf-release?all=1>`_ 的最后一个版本是v287，后续被 `cf-deployment <https://github.com/cloudfoundry/cf-deployment.git>`_ 替代，也可以使用 `cf-deployment-transition <https://github.com/cloudfoundry/cf-deployment-transition>`_ ，将cf-release工程迁移到cf-deployment
 
@@ -208,29 +208,30 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
   - 3.1.3修改域名example.com为自己配置的域名
   - 3.1.4修改security group安全组为创建director时候的安全组
 
-* 3.2上传部署cf的时候需要用到的stemcell和release
+* 3.2上传部署cf的时候需要用到的stemcell和release包
 
-  可以将镜像配置配置到yml文件中，也可以将通过upload-release命令上传到director中，注意release的版本要与stemcell匹配，
-  比如下面的release使用说明中就会看到对应的需要哪个版本的stemcell
+  **注意**
+  注意release的版本一定要与stemcell匹配，不然可能会导致服务cf起不来，比如下面的release使用说明中就会看到对应的release包需要哪个版本的stemcell
   https://bosh.io/releases/github.com/cloudfoundry/cf-release?version=250#usage
 
+  上传release包可以将路径配置配置到cf-deployment.yml文件中，也可以将通过upload-release命令上传到director中，
   ::
 
     bosh upload-release --sha1 456a52f8a03728708252910eef90dc490bcb76a3 \
     https://bosh.io/d/github.com/cloudfoundry/cf-release?v=231
 
-* 3.3上传镜像，用于后续创建cf所需虚拟机使用
-::
+  上传镜像，用于后续创建cf所需虚拟机使用
+  ::
 
-  wget https://s3.amazonaws.com/bosh-core-stemcells/openstack/bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
-  bosh upload-stemcell bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
+    wget https://s3.amazonaws.com/bosh-core-stemcells/openstack/bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
+    bosh upload-stemcell bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
 
-* 3.4执行如下命令，使用 `cf-deployment.yml <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cf-deployment.yml>`_ 的配置进行部署名叫openstack-cf的cloudfoundry环境
+* 3.3执行如下命令，使用 `cf-deployment.yml <https://github.com/zhongjun2/docs/blob/master/cloudfoundry/cf-deployment.yml>`_ 的配置进行部署名叫openstack-cf的cloudfoundry环境
 ::
 
   bosh -e bosh-1 -d openstack-cf deploy cf-deployment.yml
 
-* 3.5登录cf环境，用户名为admin，密码为admin
+* 3.4登录cf环境，用户名为admin，密码为admin
 ::
 
   # cf login -a https://api.example.com --skip-ssl-validation
