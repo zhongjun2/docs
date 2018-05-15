@@ -17,6 +17,8 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
 **1. 准备运行环境**
 
+如下运行环境均可以手动创建，也可以使用下面介绍的terraform工具进行自动创建
+
 * 1.1.准备一台ubuntu 16.04的执行机，用以安装bosh cli和cloudfoundry cli执行部署cf的命令，以及后面部署cf成功后调用cf命令在cf上部署应用，登录这台执行机进行1.2步骤的操作
 
 
