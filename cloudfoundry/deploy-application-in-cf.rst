@@ -86,4 +86,25 @@
 
        state     since                  cpu    memory          disk           details
   #0   running   2018-05-15T07:24:17Z   0.3%   62.9M of 128M   125.1M of 1G
+  
+  
+* 扩容
+::
+
+  cf scale APP_NAME [-i INSTANCES] [-k DISK] [-m MEMORY] [-f]
+  
+  OPTIONS
+  -f
+  Force restart of app without prompt
+
+  -i
+  Number of instances
+
+  -k
+  Disk limit (e.g. 256M, 1024M, 1G)
+
+  -m
+  Memory limit (e.g. 256M, 1024M, 1G)
+  
+  https://cli.cloudfoundry.org/en-US/cf/scale.html
 
