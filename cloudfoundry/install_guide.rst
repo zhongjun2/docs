@@ -11,8 +11,6 @@ https://bosh.io/releases/github.com/cloudfoundry/cf-release?all=1
 https://bosh.io/d/github.com/cloudfoundry/cf-release?v=231
 
 
-
-
 bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
 
@@ -194,7 +192,7 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 
 **3.安装cloudfoundry**
 
-**注意**:  老方法cf-release的最后一个版本是v287，后续被 `cf-deployment <https://github.com/cloudfoundry/cf-deployment.git>`_ 替代，也可以使用 `cf-deployment-transition <https://github.com/cloudfoundry/cf-deployment-transition>`_ ，将cf-release工程迁移到cf-deployment
+**注意**:  老方法 `cf-release <https://bosh.io/releases/github.com/cloudfoundry/cf-release?all=1>`_ 的最后一个版本是v287，后续被 `cf-deployment <https://github.com/cloudfoundry/cf-deployment.git>`_ 替代，也可以使用 `cf-deployment-transition <https://github.com/cloudfoundry/cf-deployment-transition>`_ ，将cf-release工程迁移到cf-deployment
 
 Notice: cf-release is now end-of-life. The final version of cf-release is v287.
 cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-deployment/releases
@@ -216,10 +214,10 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 
   ::
 
-    bosh upload-release --sha1 f6b118483a972d0f619af707cf4a55c20e27f361 \
-    https://bosh.io/d/github.com/cloudfoundry/cf-release?v=250
+    bosh upload-release --sha1 456a52f8a03728708252910eef90dc490bcb76a3 \
+    https://bosh.io/d/github.com/cloudfoundry/cf-release?v=231
 
-* 3.3上传镜像
+* 3.3上传镜像，用于后续创建cf所需虚拟机使用
 ::
 
   wget https://s3.amazonaws.com/bosh-core-stemcells/openstack/bosh-stemcell-3312.12-openstack-kvm-ubuntu-trusty-go_agent.tgz
@@ -229,6 +227,11 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 ::
 
   bosh -e bosh-1 -d openstack-cf deploy cf-deployment.yml
+
+* 3.5登录cf环境
+::
+
+  bosh cf login -a https://api.example.com --skip-ssl-validation
 
 
 **新方法使用cf-deployment进行部署**
