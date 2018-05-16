@@ -228,6 +228,7 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
   - 3.1.3修改域名example.com为自己配置的域名
   - 3.1.4修改security group安全组为创建director时候的安全组
   - 3.1.5修改haproxy static_ips为自己的eip
+  - 3.1.6修改instance_type为自己的虚拟机flavor类型，例如s2.large.2
 
 * 3.2上传部署cf的时候需要用到的stemcell和release包
 
