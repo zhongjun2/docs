@@ -115,7 +115,7 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
 ::
 
   $ apt-get update
-  $ apt-get sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt-dev libxml2-dev libssl-dev libreadline6 libreadline6-dev libyaml-dev libsqlite3-dev sqlite3
+  $ sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt-dev libxml2-dev libssl-dev libreadline6 libreadline6-dev libyaml-dev libsqlite3-dev sqlite3
   $ ruby -v
   ruby 2.2.3p173 (2015-08-18 revision 51636) [x86_64-darwin14]
 
