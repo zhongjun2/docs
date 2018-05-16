@@ -35,7 +35,7 @@
 * 3.修改 manifest.yml文件中的域名为自己的域名，与部署cf时填写的域名一致，这里为example.com
 ::
 
-  $ cd cf-php-demo-master/
+  $ cd cf-php-demo/
   $ vi manifest.yml
   ---
   applications:
