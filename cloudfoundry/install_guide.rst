@@ -178,6 +178,11 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
       -v availability_zone=eu-de-02 \
       -v region=eu-de
 
+注:如果包下不下来，可以自己在本地下载后上传到执行机中，并把bosh-deployment/openstack/cpi.yml文件
+vi bosh-deployment/openstack/cpi.yml    中的相应包路径进行修改
+
+::
+
   $export BOSH_ENVIRONMENT=160.44.206.37
   # Configure local alias
   $ bosh alias-env bosh-1 -e 119.3.21.3 --ca-cert <(bosh int ./creds.yml --path /director_ssl/ca)
