@@ -3,8 +3,26 @@
 在cf上部署应用
 =============
 
+* 1.登录cloud foundry，其中“example.com”根据实际域名替换（前面配置的DNS就是example.com，因此不用更改），默认用户名为admin，默认密码为admin。登录后显示如下
+# cf login -a https://api.example.com --skip-ssl-validation
+API endpoint: https://api.example.com
 
-* 1.创建并指定空间，默认创建名为mycloud的组织org，以及名为development的space空间，一个org组织下可以包含多个空间，每个空间下可以部署多个应用
+Email> admin
+
+Password>
+Authenticating...
+OK
+
+Targeted org mycloud
+
+
+
+API endpoint:   https://api.example.com (API version: 2.51.0)
+User:           admin
+Org:            mycloud
+Space:          No space targeted, use 'cf target -s SPACE'
+
+* 2.创建并指定空间，默认创建名为mycloud的组织org，以及名为development的space空间，一个org组织下可以包含多个空间，每个空间下可以部署多个应用
 ::
 
   $ cf create-space development
@@ -27,7 +45,7 @@
   space:          development
 
 
-* 2.下载示例应用demo
+* 3.下载示例应用demo
 ::
 
   $ git clone https://github.com/cloudfoundry-samples/cf-php-demo
@@ -63,6 +81,48 @@
 
   name     requested state   instances   memory   disk   urls
   myapp    started           1/1         128M     1G     cf-php-demo.example.com
+
+应用推送成功后即可通过curl： https://cf-php-demo.example.com 访问该应用。你也可以为一个应用配置多个urls访问该应用
+
+
+* 部署第二个应用wordpress
+
+
+# 下载 wordpress 并解压
+::
+
+  $ wget https://wordpress.org/latest.zip
+  $ unzip latest.zip && cd wordpress
+
+# 创建应用空间，由于在第一条中以及创建好了名为mycloud的org组织，因此这里在该组织下又创建了一个新的名为wordpress的空间
+::
+
+  $ cf create-space wordpress -o mycloud
+    
+# 指定目标组织
+::
+
+  $ cf target -o "mycloud" -s "wordpress"
+    
+# 查看已经存在的应用空间，包括development和wordpress两个
+::
+
+  $ cf spaces
+  Getting spaces in org mycloud as admin...
+
+  name
+  development
+  wordpress
+
+    
+# 发布 wordpress
+::
+
+  $ cf push wordpress -b php_buildpack
+
+
+应用相关操作
+================
 
 * 重启app
 ::
@@ -110,36 +170,4 @@
   
   
   
-* 部署wordpress应用
 
-# 下载 wordpress 并解压
-::
-
-  $ wget https://wordpress.org/latest.zip
-  $ unzip latest.zip && cd wordpress
-
-# 创建应用空间，由于在第一条中以及创建好了名为mycloud的org组织，因此这里在该组织下又创建了一个新的名为wordpress的空间
-::
-
-  $ cf create-space wordpress -o mycloud
-    
-# 指定目标组织
-::
-
-  $ cf target -o "mycloud" -s "wordpress"
-    
-# 查看已经存在的应用空间，包括development和wordpress两个
-::
-
-  $ cf spaces
-  Getting spaces in org mycloud as admin...
-
-  name
-  development
-  wordpress
-
-    
-# 发布 wordpress
-::
-
-  $ cf push wordpress -b php_buildpack
