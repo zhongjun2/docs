@@ -52,7 +52,7 @@
 
   $ git clone https://github.com/cloudfoundry-samples/cf-php-demo
 
-* 3.修改 manifest.yml文件中的域名为自己的域名，与部署cf时填写的域名一致，这里为example.com
+* 4.修改 manifest.yml文件中的域名为自己的域名，与部署cf时填写的域名一致，这里为example.com
 ::
 
   $ cd cf-php-demo/
@@ -67,7 +67,7 @@
     path: .
     buildpack: https://github.com/dmikusa-pivotal/cf-php-apache-buildpack.git
 
-* 4.推送应用
+* 5.推送应用
 ::
 
   $ cf push myapp -b php_buildpack
