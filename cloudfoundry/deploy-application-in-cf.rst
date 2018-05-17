@@ -172,5 +172,12 @@
   https://cli.cloudfoundry.org/en-US/cf/scale.html
   
   
+ * 应用程序日志可以被查看。应用程序的环境属性可以查看：
+ cf logs [App-Name] --recent 
+ 
+ * 应用程序运行的环境也可以看到
+ cf env [App-Name]
+ 
+   
   
 
