@@ -4,23 +4,25 @@
 =================
 
 * 1.登录cloud foundry，其中“example.com”根据实际域名替换（前面配置的DNS就是example.com，因此不用更改），默认用户名为admin，默认密码为admin。登录后显示如下
-# cf login -a https://api.example.com --skip-ssl-validation
-API endpoint: https://api.example.com
+::
 
-Email> admin
+  # cf login -a https://api.example.com --skip-ssl-validation
+  API endpoint: https://api.example.com
 
-Password>
-Authenticating...
-OK
+  Email> admin
 
-Targeted org mycloud
+  Password>
+  Authenticating...
+  OK
+
+  Targeted org mycloud
 
 
 
-API endpoint:   https://api.example.com (API version: 2.51.0)
-User:           admin
-Org:            mycloud
-Space:          No space targeted, use 'cf target -s SPACE'
+  API endpoint:   https://api.example.com (API version: 2.51.0)
+  User:           admin
+  Org:            mycloud
+  Space:          No space targeted, use 'cf target -s SPACE'
 
 * 2.创建并指定空间，默认创建名为mycloud的组织org，以及名为development的space空间，一个org组织下可以包含多个空间，每个空间下可以部署多个应用
 ::
