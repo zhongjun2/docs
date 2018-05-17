@@ -1,7 +1,7 @@
 
 
-在cf上部署应用
-=============
+在cf上部署demo应用
+=================
 
 * 1.登录cloud foundry，其中“example.com”根据实际域名替换（前面配置的DNS就是example.com，因此不用更改），默认用户名为admin，默认密码为admin。登录后显示如下
 # cf login -a https://api.example.com --skip-ssl-validation
@@ -85,7 +85,8 @@ Space:          No space targeted, use 'cf target -s SPACE'
 应用推送成功后即可通过curl： https://cf-php-demo.example.com 访问该应用。你也可以为一个应用配置多个urls访问该应用
 
 
-* 部署第二个应用wordpress
+部署第二个应用wordpress
+======================
 
 
 # 下载 wordpress 并解压
