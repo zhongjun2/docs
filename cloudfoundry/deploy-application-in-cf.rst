@@ -85,6 +85,7 @@
   myapp    started           1/1         128M     1G     cf-php-demo.example.com
 
 应用推送成功后即可通过curl： https://cf-php-demo.example.com 访问该应用。你也可以为一个应用配置多个urls访问该应用
+ curl https://cf-php-demo.example.com > page.html
 
 
 部署第二个应用wordpress
@@ -172,11 +173,15 @@
   https://cli.cloudfoundry.org/en-US/cf/scale.html
   
   
- * 应用程序日志可以被查看。应用程序的环境属性可以查看：
- cf logs [App-Name] --recent 
+* 应用程序日志可以被查看。应用程序的环境属性可以查看：
+::
+
+  cf logs [App-Name] --recent 
  
- * 应用程序运行的环境也可以看到
- cf env [App-Name]
+* 应用程序运行的环境也可以看到
+::
+
+  cf env [App-Name]
  
    
   
