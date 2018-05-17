@@ -4,7 +4,7 @@
 =============
 
 
-* 1.创建并指定空间
+* 1.创建并指定空间，默认创建名为mycloud的组织org，以及名为development的space空间，一个org组织下可以包含多个空间，每个空间下可以部署多个应用
 ::
 
   $ cf create-space development
@@ -107,4 +107,39 @@
   Memory limit (e.g. 256M, 1024M, 1G)
   
   https://cli.cloudfoundry.org/en-US/cf/scale.html
+  
+  
+  
+* 部署wordpress应用
 
+# 下载 wordpress 并解压
+::
+
+  $ wget https://wordpress.org/latest.zip
+  $ unzip latest.zip && cd wordpress
+
+# 创建应用空间，由于在第一条中以及创建好了名为mycloud的org组织，因此这里在该组织下又创建了一个新的名为wordpress的空间
+::
+
+  $ cf create-space wordpress -o mycloud
+    
+# 指定目标组织
+::
+
+  $ cf target -o "mycloud" -s "wordpress"
+    
+# 查看已经存在的应用空间，包括development和wordpress两个
+::
+
+  $ cf spaces
+  Getting spaces in org mycloud as admin...
+
+  name
+  development
+  wordpress
+
+    
+# 发布 wordpress
+::
+
+  $ cf push wordpress -b php_buildpack
