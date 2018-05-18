@@ -333,14 +333,14 @@ https://bosh.io/docs/cloud-config/
 添加haproxy的私有ip为static ip到你的网络中
 ::
 
-- az: z1
-    range: 10.0.1.0/20
-    reserved: [10.0.1.2-10.0.1.50]
-    gateway: 10.0.1.1
-    static: [10.0.1.51]
-    cloud_properties:
-      net_id: ((network_id1))
-      security_groups: [cf]
+  - az: z1
+      range: 10.0.1.0/20
+      reserved: [10.0.1.2-10.0.1.50]
+      gateway: 10.0.1.1
+      static: [10.0.1.51]
+      cloud_properties:
+        net_id: ((network_id1))
+        security_groups: [cf]
 
 ::
 
