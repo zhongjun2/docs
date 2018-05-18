@@ -316,6 +316,7 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 
 
 * 3.6 部署cloudfoundry
+
 方案一：以下为部署带loadbalance服务的cf方案
 ::
 
@@ -327,6 +328,20 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
 
 
 方案二：以下为部署不带loadbalance服务的cf方案，使用haproxy替代
+https://bosh.io/docs/cloud-config/
+在/root/bosh-1/cf-deployment/iaas-support/openstack/cloud-config.yml文件中
+添加haproxy的私有ip为static ip到你的网络中
+::
+
+- az: z1
+    range: 10.0.1.0/20
+    reserved: [10.0.1.2-10.0.1.50]
+    gateway: 10.0.1.1
+    static: [10.0.1.51]
+    cloud_properties:
+      net_id: ((network_id1))
+      security_groups: [cf]
+
 ::
 
   bosh -e bosh-1 -d openstack-cf deploy cf-deployment/cf-deployment.yml \
