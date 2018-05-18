@@ -87,7 +87,10 @@
 应用推送成功后即可通过curl： https://cf-php-demo.example.com 访问该应用。你也可以为一个应用配置多个urls访问该应用
  curl https://cf-php-demo.example.com > page.html
  
- 或者用wget获取网站信息： wget https://cf-php-demo.example.com
+ 或者用wget获取网站信息：
+ ::
+ 
+   wget https://cf-php-demo.example.com
 
 
 
