@@ -354,5 +354,5 @@ https://bosh.io/docs/cloud-config/
 登录cf
 ::
 
-cf login -a https://api.example.com --skip-ssl-validation -u admin -p `bosh int ./cf-vars.yml --path /cf_admin_password`
+  cf login -a https://api.example.com --skip-ssl-validation -u admin -p `bosh int ./cf-vars.yml --path /cf_admin_password`
 
