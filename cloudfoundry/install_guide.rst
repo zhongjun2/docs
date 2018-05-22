@@ -324,7 +324,7 @@ cf-deployment 历史版本参考链接： https://github.com/cloudfoundry/cf-dep
        -o cf-deployment/operations/use-compiled-releases.yml \
        -o cf-deployment/operations/openstack.yml \
        --vars-store cf-vars.yml \
-       -v system_domain="cloudfoundry.com"
+       -v system_domain="example.com"
 
 
 方案二：以下为部署不带loadbalance服务的cf方案，使用haproxy替代
@@ -346,8 +346,12 @@ https://bosh.io/docs/cloud-config/
 
   bosh -e bosh-1 -d openstack-cf deploy cf-deployment/cf-deployment.yml \
   --vars-store cf-vars.yml \
-  -v system_domain=cloudfoundry.com \
+  -v system_domain=example.com \
   -v haproxy_private_ip=192.168.10.51  \
   -o cf-deployment/operations/openstack.yml \
   -o cf-deployment/operations/use-haproxy.yml
 
+登录cf
+```
+cf login -a https://api.example.com --skip-ssl-validation -u admin -p `bosh int ./cf-vars.yml --path /cf_admin_password`
+```
