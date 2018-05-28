@@ -45,3 +45,7 @@ How to debug manila service
 
   python setup.py install
 
+* 检查格式问题
+::
+
+  tox -epep8 -vv
