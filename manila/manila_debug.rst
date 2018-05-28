@@ -53,5 +53,6 @@ How to debug manila service
 * 跑单元测试
 ::
  
-  tox -epy27  -- -n manila.tests.share.test_access.ShareInstanceAccessDatabaseMixinTestCase
- 
+  tox -epy27
+  //运行一个单独的test
+  tox -e py27 -- test_file_name_here.py:TestClassName.test_method_name
