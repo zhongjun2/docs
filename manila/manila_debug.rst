@@ -56,3 +56,4 @@ How to debug manila service
   tox -epy27
   //运行一个单独的test
   tox -e py27 -- test_file_name_here.py:TestClassName.test_method_name
+  stestr run manila.tests.share.test_manager
