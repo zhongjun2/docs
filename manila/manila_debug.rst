@@ -49,3 +49,9 @@ How to debug manila service
 ::
 
   tox -epep8 -vv
+  
+ * 跑单元测试
+ ::
+ 
+  tox -epy27  -- -n manila.tests.share.test_access.ShareInstanceAccessDatabaseMixinTestCase
+ 
