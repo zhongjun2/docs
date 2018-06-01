@@ -173,8 +173,6 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
       -v openstack_username=cloud_user \
       -v openstack_domain=cloud_domamin \
       -v openstack_project=project_name \
-      -v openstack_state_timeout=30000 \
-      -v state_timeout=30000 \
       -v private_key=./bosh.pem \
       -v openstack_flavor=s2.large.2 \
       -v availability_zone=eu-de-02 \
