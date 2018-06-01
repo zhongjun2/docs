@@ -174,13 +174,31 @@ bosh deploy参考链接： https://bosh.io/docs/init-openstack/
       -v openstack_domain=cloud_domamin \
       -v openstack_project=project_name \
       -v private_key=./bosh.pem \
-      -v openstack_flavor=s2.large.2 \
       -v availability_zone=eu-de-02 \
       -v region=eu-de
 
 注:如果包下不下来，可以自己在本地下载后上传到执行机中，并把bosh-deployment/openstack/cpi.yml文件
-vi bosh-deployment/openstack/cpi.yml    中的相应包路径进行修改
+vi bosh-deployment/openstack/cpi.yml    中的相应包路径进行修改, -v state_timeout=30000 
+-v openstack_flavor=s2.large.2 \ 上传镜像超时设置，和创建虚拟机时候的flavor虚拟机规格设置在bosh cli
+v2中也没有生效，需要手动在bosh-deployment/openstack/cpi.yml文件文档中添加或者修改  
+::
 
+  - type: replace
+    path: /instance_groups/name=bosh/properties/openstack?
+    value: &openstack
+      auth_url: ((auth_url))
+      username: ((openstack_username))
+      api_key: ((openstack_password))
+      domain: ((openstack_domain))
+      project: ((openstack_project))
+      region: ((region))
+      default_key_name: ((default_key_name))
+      default_security_groups: ((default_security_groups))
+      state_timeout: 30000
+      human_readable_vm_names: true
+
+
+登录bosh director
 ::
 
   $export BOSH_ENVIRONMENT=160.44.206.37
