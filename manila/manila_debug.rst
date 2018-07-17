@@ -57,3 +57,15 @@ How to debug manila service
   //运行一个单独的test
   tox -e py27 -- test_file_name_here.py:TestClassName.test_method_name
   stestr run manila.tests.share.test_manager
+  
+* 跑tempest test
+
+https://github.com/openstack/manila/blob/master/doc/source/contributor/tempest_tests.rst
+```
+tempest run -r manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_state
+```
+
+* 跑API文档测试
+::
+
+  tox -e api-ref
