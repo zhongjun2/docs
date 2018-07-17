@@ -71,3 +71,13 @@ https://github.com/openstack/manila/blob/master/doc/source/contributor/tempest_t
 ::
 
   tox -e api-ref
+
+* 跑python-manilclient的function test
+::
+
+  $ tox -e genconfig
+  This will create file 'etc/manilaclient/manilaclient.conf.sample' with all available config opts. Then rename it removing   ".sample" and set values for opts there. After it, tests can be run using following tox job:
+
+  $ tox -e functional
+
+https://github.com/openstack/python-manilaclient/blob/master/doc/source/contributor/index.rst
