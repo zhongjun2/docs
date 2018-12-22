@@ -28,12 +28,23 @@ How to debug manila service
   systemctl list-units
 
 *  查看日志
-::
+
   manila share服务日志：
+  
+  ::
+  
   journalctl -u devstack@m-shr.service -f | ccze
+  
   manila schedule服务日志：
+  
+  ::
+  
   journalctl -u devstack@m-sch.service -f | ccze
+  
+  
   nova cpu服务日志：
+  
+  ::
   journalctl -u devstack@n-cpu.service -f | ccze
   https://docs.openstack.org/devstack/latest/systemd.html
   
